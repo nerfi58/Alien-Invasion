@@ -16,4 +16,4 @@ class Settings:
         self.bg_color = (230, 230, 230)
 
         # Movement settings
-        self.ship_speed = 1.5
+        self.ship_speed = 0.75

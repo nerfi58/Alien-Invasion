@@ -12,8 +12,6 @@ class Settings:
         """Initialize the game settings"""
 
         # Screen settings
-        self.screen_width = 1280
-        self.screen_height = 720
         self.bg_color = (230, 230, 230)
 
         # Movement settings

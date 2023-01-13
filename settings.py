@@ -5,7 +5,10 @@ class Settings:
     screen_height: int
     bg_color: tuple[int, int, int]
 
-    move_speed: float
+    movement_bg_color = tuple[int, int, int]
+
+    ship_speed: float
+    bottom_movement_limiter_percent: int
 
     def __init__(self) -> None:
         """Initialize the game settings"""
@@ -15,5 +18,8 @@ class Settings:
         self.screen_height = 720
         self.bg_color = (230, 230, 230)
 
+        self.movement_bg_color = (0, 0, 0)
+
         # Movement settings
-        self.ship_speed = 0.75
+        self.ship_speed = 0.5
+        self.bottom_movement_limiter_percent = 30

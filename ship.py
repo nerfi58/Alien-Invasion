@@ -1,4 +1,5 @@
 import pygame
+from pygame.math import Vector2
 
 
 class Ship:
@@ -17,10 +18,12 @@ class Ship:
         # Start each new ship at the bottom of the screen.
         self.rect.midbottom = self.screen_rect.midbottom
 
-        self.x = float(self.rect.x)
+        self.position = Vector2(self.rect.x, self.rect.y)
 
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def blitme(self) -> None:
         """Draw the ship at its current location"""
@@ -29,10 +32,15 @@ class Ship:
     def update(self) -> None:
         """Update ship position based on the movement flag."""
         # Update the ships x value, NOT the rect
-        if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.x += self.settings.ship_speed
+        right = self.moving_right and self.rect.right < self.screen_rect.right
+        left = self.moving_left and self.rect.left > 0
+        up = self.moving_up and self.rect.top >= (100 - self.settings.bottom_movement_limiter_percent) * 0.01 * self.screen_rect.bottom
+        down = self.moving_down and self.rect.bottom < self.screen_rect.bottom
 
-        if self.moving_left and self.rect.left > 0:
-            self.x -= self.settings.ship_speed
+        move = Vector2(right - left, down - up)
+        if move.length_squared() > 0:
+            move.scale_to_length(self.settings.ship_speed)
+            self.position += move
 
-        self.rect.x = self.x
+        self.rect.x = round(self.position.x)
+        self.rect.y = round(self.position.y)

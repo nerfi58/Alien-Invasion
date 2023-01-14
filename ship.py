@@ -12,7 +12,7 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load("images/ship.bmp")
         self.rect = self.image.get_rect()
 
         # Start each new ship at the bottom of the screen.
@@ -34,7 +34,10 @@ class Ship:
         # Update the ships x value, NOT the rect
         right = self.moving_right and self.rect.right < self.screen_rect.right
         left = self.moving_left and self.rect.left > 0
-        up = self.moving_up and self.rect.top >= (100 - self.settings.bottom_movement_limiter_percent) * 0.01 * self.screen_rect.bottom
+        up = (
+            self.moving_up
+            and self.rect.top >= (100 - self.settings.bottom_movement_limiter_percent) * 0.01 * self.screen_rect.bottom
+        )
         down = self.moving_down and self.rect.bottom < self.screen_rect.bottom
 
         move = Vector2(right - left, down - up)

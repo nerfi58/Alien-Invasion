@@ -14,6 +14,10 @@ class Settings:
     bullet_color = tuple[int, int, int]
     bullets_allowed: int
 
+    alien_speed: float
+    fleet_drop_speed: float
+    fleet_direction: int  # either 1 or -1
+
     def __init__(self) -> None:
         """Initialize the game settings"""
 
@@ -30,3 +34,8 @@ class Settings:
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 5
+
+        # Alien settings
+        self.alien_speed = 0.2
+        self.fleet_drop_speed = 15
+        self.fleet_direction = 1

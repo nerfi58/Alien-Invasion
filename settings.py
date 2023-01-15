@@ -18,6 +18,8 @@ class Settings:
     fleet_drop_speed: float
     fleet_direction: int  # either 1 or -1
 
+    ship_limit: int
+
     def __init__(self) -> None:
         """Initialize the game settings"""
 
@@ -37,5 +39,8 @@ class Settings:
 
         # Alien settings
         self.alien_speed = 0.2
-        self.fleet_drop_speed = 15
+        self.fleet_drop_speed = 45
         self.fleet_direction = 1
+
+        # Game settings
+        self.ship_limit = 3

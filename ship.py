@@ -25,6 +25,8 @@ class Ship:
         self.moving_up = False
         self.moving_down = False
 
+        ai_game.stats.ships_left -= 1
+
     def blitme(self) -> None:
         """Draw the ship at its current location"""
         self.screen.blit(self.image, self.rect)
@@ -47,3 +49,9 @@ class Ship:
 
         self.rect.x = round(self.position.x)
         self.rect.y = round(self.position.y)
+
+    def center_ship(self):
+        """Center the ship on the screen."""
+
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.position = Vector2(self.rect.x, self.rect.y)

@@ -18,6 +18,9 @@ class Settings:
     fleet_drop_speed: float
     fleet_direction: int  # either 1 or -1
 
+    alien_points: int
+    score_grow: int
+
     ship_limit: int
     speedup_scale: float
 
@@ -31,7 +34,7 @@ class Settings:
         self.bottom_movement_limiter_percent = 30
 
         # Bullet settings
-        self.bullet_width = 3
+        self.bullet_width = 1000
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 3
@@ -53,6 +56,10 @@ class Settings:
         self.bullet_speed = 1.5
         self.alien_speed = 0.2
 
+        # Scoring settings
+        self.alien_points = 10
+        self.score_grow = 10
+
         # 1 represents right, -1 represents left
         self.fleet_direction = 1
 
@@ -60,3 +67,4 @@ class Settings:
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+        self.alien_points += self.score_grow

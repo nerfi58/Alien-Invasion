@@ -25,8 +25,6 @@ class Ship:
         self.moving_up = False
         self.moving_down = False
 
-        ai_game.stats.ships_left -= 1
-
     def blitme(self) -> None:
         """Draw the ship at its current location"""
         self.screen.blit(self.image, self.rect)
